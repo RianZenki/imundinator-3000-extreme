@@ -53,7 +53,7 @@ export const playNext = async (
 
    await interaction.channel.send(`Tocando **${currentQueue[0].title}**`);
 
-   currentPlayer.on(AudioPlayerStatus.Idle, () => {
+   currentPlayer.once(AudioPlayerStatus.Idle, () => {
       currentQueue.shift();
       queue.set(guildId, currentQueue);
       playNext(guildId, connection, interaction);
