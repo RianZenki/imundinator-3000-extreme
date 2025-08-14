@@ -4,7 +4,6 @@ import { fileURLToPath } from "url";
 import path from "path";
 import fs from "fs";
 import { BotClient } from "./types/BotClient.js";
-import { startServer } from "./server.js";
 
 dotenv.config();
 
@@ -104,5 +103,3 @@ client.on(Events.MessageCreate, async (message) => {
 });
 
 client.login(process.env.DISCORD_BOT_TOKEN);
-
-startServer();
