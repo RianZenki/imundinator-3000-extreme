@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import path from "path";
 import fs from "fs";
 import { BotClient } from "./types/BotClient.js";
+import { startServer } from "./server.js";
 
 dotenv.config();
 
@@ -75,7 +76,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 client.on(Events.MessageCreate, async (message) => {
    if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-   const args = message.content.split(prefix)[1].trim().split(/ +/); // remove o "!" e separa os argumentos
+   const args = message.content.split(prefix)[1].trim().split(/ +/);
    const commandName = args.shift()?.toLowerCase();
 
    if (!commandName) return;
@@ -103,3 +104,5 @@ client.on(Events.MessageCreate, async (message) => {
 });
 
 client.login(process.env.DISCORD_BOT_TOKEN);
+
+startServer();
