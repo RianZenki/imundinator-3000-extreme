@@ -1,5 +1,4 @@
 import dotenv from "dotenv";
-// src/deploy-commands.js
 import { REST, Routes } from "discord.js";
 import fs from "node:fs";
 import path from "node:path";
@@ -14,7 +13,7 @@ const commands = [];
 const commandsPath = path.join(__dirname, "commands", "utility");
 const commandFiles = fs
    .readdirSync(commandsPath)
-   .filter((file) => file.endsWith(".ts"));
+   .filter((file) => file.endsWith(".ts") || file.endsWith(".js"));
 
 for (const file of commandFiles) {
    const command = await import(`file://${path.join(commandsPath, file)}`);
